@@ -2,7 +2,7 @@ import { CreateTableCommand, DynamoDBClient } from "@aws-sdk/client-dynamodb";
 
 const client = new DynamoDBClient({});
 
-async function CreateTable(tableName, columnName) {
+async function CreateTable(tableName, keyName, valueName) {
   try {
     const command = new CreateTableCommand({
       TableName: tableName,
@@ -11,15 +11,15 @@ async function CreateTable(tableName, columnName) {
       // https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.LowLevelAPI.html#Programming.LowLevelAPI.DataTypeDescriptors
       AttributeDefinitions: [
         {
-          AttributeName: columnName,
+          AttributeName: keyName,
           AttributeType: "S",
-        },
+        }
       ],
       KeySchema: [
         {
-          AttributeName: columnName,
+          AttributeName: keyName,
           KeyType: "HASH",
-        },
+        }
       ],
       ProvisionedThroughput: {
         ReadCapacityUnits: 1,
@@ -37,5 +37,6 @@ async function CreateTable(tableName, columnName) {
 
 }
 
-CreateTable("BlockNumber", "LastFetched");
+// CreateTable("BlockchainDataFetcher", "BlockType", "BlockNumber");
+CreateTable("BlockchainDataFetcher", "BlockType");
 export {};

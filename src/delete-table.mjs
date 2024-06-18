@@ -17,5 +17,5 @@ async function DeleteTable(tableName) {
   }
 }
 
-DeleteTable("BlockNumber");
+DeleteTable("BlockchainDataFetcher");
 export{};

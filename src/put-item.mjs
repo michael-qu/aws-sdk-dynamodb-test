@@ -4,13 +4,14 @@ import { PutCommand, DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
 
-async function PutItem(tableName, value) {
+async function PutItem(tableName, key, value) {
     try {
         const command = new PutCommand({
-        TableName: tableName,
-        Item: {
-            LastFetched: value,
-        },
+            TableName: tableName,
+            Item: {
+                BlockType: key,
+                BlockNumber: value
+            }
         });
     
         const response = await docClient.send(command);
@@ -23,5 +24,5 @@ async function PutItem(tableName, value) {
 
 }
 
-PutItem("BlockNumber", "123");
+PutItem("BlockchainDataFetcher", "LastFetched", 123);
 export {};

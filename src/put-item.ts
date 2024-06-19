@@ -4,7 +4,7 @@ import { PutCommand, DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
 
-async function PutItem(tableName, key, value) {
+async function PutItem(tableName: string, key: string, value: number): Promise<void> {
     try {
         const command = new PutCommand({
             TableName: tableName,
@@ -16,7 +16,7 @@ async function PutItem(tableName, key, value) {
     
         const response = await docClient.send(command);
         console.log(response);
-        return response;
+        // return response;
 
     } catch (err) {
         console.error("Error: ", err);
@@ -24,5 +24,5 @@ async function PutItem(tableName, key, value) {
 
 }
 
-PutItem("BlockchainDataFetcher", "LastFetched", 123);
-export {};
+// PutItem("BlockchainDataFetcher", "LastFetched", 123);
+export { PutItem };

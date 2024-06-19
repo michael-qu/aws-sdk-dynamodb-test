@@ -1,8 +1,9 @@
+// This code is only for test purpose. In reality the table should be created during "terraform apply"
 import { CreateTableCommand, DynamoDBClient } from "@aws-sdk/client-dynamodb";
 
 const client = new DynamoDBClient({});
 
-async function CreateTable(tableName, keyName, valueName) {
+async function CreateTable(tableName: string, keyName: string): Promise<void> {
   try {
     const command = new CreateTableCommand({
       TableName: tableName,
@@ -29,7 +30,7 @@ async function CreateTable(tableName, keyName, valueName) {
 
     const response = await client.send(command);
     console.log(response);
-    return response;
+    // return response;
 
   } catch (err) {
     console.error("Error: ", err);
@@ -37,6 +38,5 @@ async function CreateTable(tableName, keyName, valueName) {
 
 }
 
-// CreateTable("BlockchainDataFetcher", "BlockType", "BlockNumber");
 CreateTable("BlockchainDataFetcher", "BlockType");
-export {};
+export { CreateTable };

@@ -39,6 +39,7 @@ interface DynamoDBResponse {
     }
     Item: {
         BlockNumber: number,
-        BlockType: string
+        BlockType: string,
+        TimeStamp: string
     }
 }

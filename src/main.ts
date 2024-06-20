@@ -7,6 +7,7 @@ async function main(): Promise<void> {
         const response = await GetItem("BlockchainDataFetcher", "LastFetched");
         if (response) {
             console.log(response.Item.BlockNumber);
+            console.log(response.Item.TimeStamp);
         } else {
             console.log("No block number is recorded!");
         }

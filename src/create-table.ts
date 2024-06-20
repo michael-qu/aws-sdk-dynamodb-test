@@ -1,4 +1,6 @@
-// This code is only for test purpose. In reality the table should be created during "terraform apply"
+// This code is only for test purpose
+// In reality the table is defined in ../infrastructure/dynamodb.tf
+// and created during "terraform apply"
 // On-Demand Pricing is suggested when you develop a baseline traffic level for your application
 // Once you feel like you have a strong understanding of your traffic needs,
 // You can switch to defining your Provisioned Throughput to lower costs.

@@ -27,7 +27,7 @@ yarn-error.log*
 *.zip
 
 # infrastructure
-/.terraform
-.terraform.lock.hcl
-terraform.tfstate
-terraform.tfstate.backup
+/infrastructure/.terraform
+*.hcl
+*.tfstate
+*.backup

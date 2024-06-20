@@ -1,3 +1,6 @@
+// This code is only for test purpose
+// In reality the table is defined in ../infrastructure/dynamodb.tf
+// and deleted during "terraform destroy"
 import { DeleteTableCommand, DynamoDBClient } from "@aws-sdk/client-dynamodb";
 
 const client = new DynamoDBClient({});

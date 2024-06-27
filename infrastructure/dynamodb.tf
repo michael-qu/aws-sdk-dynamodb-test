@@ -21,4 +21,12 @@ resource "aws_dynamodb_table" "this" {
     Name        = local.db_name
     Environment = "test"
   }
+
+  # tell Terraform to ignore changes to the ttl block
+  # This way, Terraform will not try to disable TTL if it is already disabled.
+  lifecycle {
+    ignore_changes = [
+      ttl,
+    ]
+  }
 }
